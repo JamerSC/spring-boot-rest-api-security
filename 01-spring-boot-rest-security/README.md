@@ -49,6 +49,7 @@
 - Mapstruct - maven repo 
 - Mapstruct Processor - maven repo
 - Mapstruct-Lombok Binding - maven repo
+- Added SPRING SECURITY (4/26/2025)
 
 ### IntelliJ Configurations
 - `File > Settings > Build, Execution, & Deployment > Compiler > Build Tools and checked ✅`
@@ -175,3 +176,36 @@ Rebuild project:
 - Create Response Error Class with Status, Message, & Timestamp: `EmployeeResponseError.java`
 - Create Employee Exception class thi will be used to extend the Runtime Exc: `EmployeeNotFoundException.java`
 - Refactor REST Service Controller temporary Runtime Exc handling code
+
+### 🗓️ April 26, 2025
+
+- Added SPRING SECURITY Dependency
+- Spring Security is a powerful framework that's part of the Spring ecosystem designed to handle authentication and authorization in Java applications.
+- In simple words: Spring Security protects your app — it decides who can log in, what they can access, and what they can't.
+
+### What Spring Security does:
+- Authentication = checking who the user is (e.g., login form, username + password).
+- Authorization = checking what the user is allowed to do (e.g., only admins can delete users). 
+- Password Encryption = securely stores passwords. 
+- Security Filters = protects APIs, URLs, forms automatically. 
+- Role-Based Access Control (RBAC) = e.g., ADMIN, USER, etc. 
+- Session Management = prevents session hijacking. 
+- CSRF Protection = prevents Cross-Site Request Forgery attacks. 
+- OAuth2, JWT support = you can use tokens, social login (Google, Facebook) if needed.
+
+### Where it's commonly used: 
+- Protect login/logout functionality. 
+- Control which pages different users can see. 
+- Secure REST APIs. 
+- Add two-factor authentication (2FA). 
+- Integrate with OAuth2 providers (Google, GitHub login).
+
+### Implemented the following: 
+- @Configuration is an annotation that marks a class as a source of Spring bean definitions. 
+  - In simple words: It's telling Spring, "Hey, this class contains methods that create and configure objects (beans) for the Spring container.
+  - Why is it important? Spring needs to know which objects (beans) it should create and how to configure them. @Configuration classes are where you define these beans manually (instead of using automatic component scanning).
+- In Memory User Details Manager, In Spring Security, InMemoryUserDetailsManager is a simple user store that keeps user information in memory (RAM) — not in a database.
+  - In simple words: It's like saving usernames, passwords, and roles inside your code for quick testing or small apps.
+  - It stores users inside the app. 
+  - It’s temporary — if you restart your app, users are gone. 
+    - Good for testing, small demos, learning Spring Security.
