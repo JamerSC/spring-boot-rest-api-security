@@ -2,12 +2,12 @@ CREATE DATABASE  IF NOT EXISTS `employee_directory`;
 USE `employee_directory`;
 
 --
--- Table structure for table `employee`
+-- Table structure for table `employees`
 --
 
-DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `employees`;
 
-CREATE TABLE `employee` (
+CREATE TABLE `employees` (
   `id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
@@ -19,14 +19,14 @@ CREATE TABLE `employee` (
 -- Data for table `employee`
 --
 
-INSERT INTO `employee` (`first_name`, `last_name`, `email`) VALUES 
+INSERT INTO `employees` (`first_name`, `last_name`, `email`) VALUES 
 	(1,'Leslie','Andrews','leslie@luv2code.com'),
 	(2,'Emma','Baumgarten','emma@luv2code.com'),
 	(3,'Avani','Gupta','avani@luv2code.com'),
 	(4,'Yuri','Petrov','yuri@luv2code.com'),
 	(5,'Juan','Vega','juan@luv2code.com');
     
-INSERT INTO `employee` (`first_name`, `last_name`, `email`) VALUES 
+INSERT INTO `employees` (`first_name`, `last_name`, `email`) VALUES 
 	('Leslie','Andrews','leslie@luv2code.com'),
 	('Emma','Baumgarten','emma@luv2code.com'),
 	('Avani','Gupta','avani@luv2code.com'),

@@ -200,12 +200,11 @@ Rebuild project:
 - Add two-factor authentication (2FA). 
 - Integrate with OAuth2 providers (Google, GitHub login).
 
-### Implemented the following: 
-- @Configuration is an annotation that marks a class as a source of Spring bean definitions. 
-  - In simple words: It's telling Spring, "Hey, this class contains methods that create and configure objects (beans) for the Spring container.
-  - Why is it important? Spring needs to know which objects (beans) it should create and how to configure them. @Configuration classes are where you define these beans manually (instead of using automatic component scanning).
-- In Memory User Details Manager, In Spring Security, InMemoryUserDetailsManager is a simple user store that keeps user information in memory (RAM) — not in a database.
-  - In simple words: It's like saving usernames, passwords, and roles inside your code for quick testing or small apps.
-  - It stores users inside the app. 
-  - It’s temporary — if you restart your app, users are gone. 
-    - Good for testing, small demos, learning Spring Security.
+### Note 📝 - spring security has a default login page
+- Used the default spring security features. Below the default access
+  - Default username is: user
+  - Default password in run application terminal it auto generates the password
+    - `Using generated security password: 97d8a542-90b8-4341-9788-e05d3bf1662b`
+- Custom username & password you can set it to `application.properties` ex.
+  - `spring.security.user.name=jamer`
+  - `spring.security.user.password=test123`
