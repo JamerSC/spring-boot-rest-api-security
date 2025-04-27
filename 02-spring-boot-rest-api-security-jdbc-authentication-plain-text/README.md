@@ -204,8 +204,40 @@ Rebuild project:
 - @Configuration is an annotation that marks a class as a source of Spring bean definitions. 
   - In simple words: It's telling Spring, "Hey, this class contains methods that create and configure objects (beans) for the Spring container.
   - Why is it important? Spring needs to know which objects (beans) it should create and how to configure them. @Configuration classes are where you define these beans manually (instead of using automatic component scanning).
-- In Memory User Details Manager, In Spring Security, InMemoryUserDetailsManager is a simple user store that keeps user information in memory (RAM) — not in a database.
+  
+1. In Memory User Details Manager, In Spring Security, InMemoryUserDetailsManager is a simple user store that keeps user information in memory (RAM) — not in a database.
   - In simple words: It's like saving usernames, passwords, and roles inside your code for quick testing or small apps.
   - It stores users inside the app. 
   - It’s temporary — if you restart your app, users are gone. 
-    - Good for testing, small demos, learning Spring Security.
+    - Good for testing, small demos, learning Spring Security. 
+
+### JDBC Authentication - Added 2 class
+- User
+ - username (PK)
+ - password
+ - enabled
+ - authorities (Set<Authority>)
+- Authority
+ - id (PK)
+ - authority
+ - user (FK to User)
+
+
+2. User Details Manager - In Spring Security, UserDetailsManager is an interface that extends UserDetailsService. 
+- It's used for managing user accounts — not just reading user details (like UserDetailsService does), but also creating, updating, deleting, and changing passwords for users.
+
+### In simple terms:
+- UserDetailsService → `only loads user info (like for login).`
+- UserDetailsManager → `can load, create, update, delete users.`
+
+`@Bean
+public UserDetailsManager userDetailsManager(DataSource dataSource) {
+return new JdbcUserDetailsManager(dataSource);
+}`
+
+### You are telling Spring:
+- 👉 "Use a database (DataSource) to manage users."
+- JdbcUserDetailsManager is a `built-in Spring Security class` that knows how to store and fetch users from a database using JDBC (SQL queries)
+
+### 📝
+`Note: Updated In Memory User into User Details Manager`

@@ -56,6 +56,19 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employee save(EmployeeDTO theEmployee) {
         Employee employeeDb = employeeMapper.dtoToEntity(theEmployee);
+
+        // If the ID is 0, set it to null (to treat it as a new employee)
+        if (employeeDb.getId() != null && employeeDb.getId() == 0) {
+            employeeDb.setId(null);
+        }
+
+        // If the ID is not null, check if the employee exists before updating
+        if (employeeDb.getId() != null) {
+            employeeRepository.findById(Math.toIntExact(employeeDb.getId()))
+                    .orElseThrow(() -> new EmployeeNotFoundException("Employee id not found: " + employeeDb.getId()));
+        }
+
+        // Save (insert or update) the employee
         return employeeRepository.save(employeeDb);
     }
 
